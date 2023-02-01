@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { orderBy } from '@angular/fire/firestore';
 import { BehaviorSubject, finalize, first } from 'rxjs';
 import { Catch } from './catch.model';
 
@@ -14,7 +15,7 @@ export class CatchesService {
 
 	// Retrieve a list of catches for 
 	fetchUserCatches(userId: string) {
-		this.firestore.collection<Catch>('catches', ref => ref.where('uid', '==', userId)).valueChanges({ idField: 'doc_id' }).pipe(first()).subscribe((catches: Catch[]) => this.userCatches.next(catches));
+		this.firestore.collection<Catch>('catches', ref => ref.where('uid', '==', userId).orderBy('createdAt', 'desc')).valueChanges({ idField: 'doc_id' }).pipe(first()).subscribe((catches: Catch[]) => this.userCatches.next(catches));
 	}
 
 	addCatch(formValues: Catch, file: any) {

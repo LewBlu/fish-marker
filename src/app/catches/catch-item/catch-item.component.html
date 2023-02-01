@@ -1,7 +1,7 @@
 <div class="card mt-2">
-	<img src="assets/fish_example.jpg" class="card-img-top" alt="...">
+	<img src="{{ catch.image }}" class="card-img-top" alt="..." style="max-height: 500px;">
 	<div class="card-body">
-		<h5 class="card-title d-flex justify-content-between"><span>{{ catch.type }}</span><span class="fs-6 fst-italic text-muted">({{ catch.weight }})</span></h5>
+		<h5 class="card-title d-flex justify-content-between"><span>{{ catch.type }}</span><span class="fs-6 fst-italic text-muted">({{ catch.lbs }}lbs {{ catch.oz }}oz)</span></h5>
 		<p class="card-text m-0">Bait: {{ catch.bait }}</p>
 		<p class="card-text m-0">Rig: {{ catch.rig }}</p>
 	</div>
