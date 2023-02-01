@@ -81,13 +81,6 @@ export class MapComponent implements OnInit, OnDestroy {
 		if (this.catchForm.valid) {
 			let catchFormValues: any = this.catchForm.value;
 			catchFormValues.createdAt = Timestamp.now();
-			// console.log(this.fileToUpload)
-			// let url = this.catchesService.uploadCatchPhoto(this.fileToUpload, catchFormValues.uid);
-			// console.log(url);
-			// catchFormValues.image = url;
-
-
-
 			this.catchesService.addCatch(catchFormValues, this.fileToUpload);
 			this.createMarker(catchFormValues);
 			const element = document.getElementById('close-bootstrap-modal') as HTMLElement;
@@ -108,8 +101,7 @@ export class MapComponent implements OnInit, OnDestroy {
 		marker.addListener('click', () => {
 			new google.maps.InfoWindow({
 				content: `<div id="content">
-							<h1 id="firstHeading" class="firstHeading">${catchItem.type}</h1>
-							<img src="${catchItem.image}" class="card-img-top" alt="...">
+							<h1 id="firstHeading" class="firstHeading">${catchItem.type}</h1>` + (catchItem.image ? `<img src="${catchItem.image}" class="card-img-top" alt="...">` : ``) + `
 							<div id="bodyContent">
 								<p class="mb-0"><strong>Weight:</strong> ${catchItem.lbs} Lbs ${catchItem.oz} oz</p>
 								<p class="mb-0"><strong>Bait:</strong> ${catchItem.bait}</p>

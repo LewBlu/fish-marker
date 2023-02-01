@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { orderBy } from '@angular/fire/firestore';
 import { BehaviorSubject, finalize, first } from 'rxjs';
 import { Catch } from './catch.model';
 
